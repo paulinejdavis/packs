@@ -1,6 +1,6 @@
-# packs
+# `packs`
 
-## **project summary**
+## **project `summary`**
 
 <img width="90" alt="arrow" src="https://user-images.githubusercontent.com/19231569/213458967-d77d1ede-cbb8-4cda-8d58-7ac2a1c70503.png"><img
 width="253" alt="GS logo" src="assets/gs.logo.png">
@@ -16,6 +16,8 @@ To use the application, submit an order through the HTTP API endpoint specifying
 ### **packs `how to..`:**
 
 The application is implemented in Golang and provides an HTTP API for receiving orders. The core logic for calculating the number of packs is encapsulated in functions within `main.go`, ensuring adherence to the specified rules. Unit tests in `main_test.go` verify the accuracy of the pack calculation logic.
+
+### **packs `output examples:`:**
 
 ### **`tech` stack**
 
