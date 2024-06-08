@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
+	"sort"
 	"strconv"
 )
 
@@ -11,13 +12,20 @@ var PackSizes = []int{5000, 2000, 1000, 500, 250}
 
 func calculatePacks(orderSize int) map[int]int {
 	packs := make(map[int]int)
+	sort.Slice(PackSizes, func(i, j int) bool {
+		return PackSizes[i] > PackSizes[j]
+	})
 	for _, size := range PackSizes {
 		if orderSize >= size {
 			count := orderSize / size
 			packs[size] = count
-			orderSize -= size * count
+			orderSize %= size
+			//orderSize -= size * count
 		}
 	}
+		if orderSize > 0 {
+			packs[PackSizes[len(PackSizes)-1]] += 1
+		}
 	return packs
 }
 

@@ -17,7 +17,9 @@ To use the application, submit an order through the HTTP API endpoint specifying
 
 The application is implemented in Golang and provides an HTTP API for receiving orders. The core logic for calculating the number of packs is encapsulated in functions within `main.go`, ensuring adherence to the specified rules. Unit tests in `main_test.go` verify the accuracy of the pack calculation logic.
 
-### **packs `output examples:`:**
+### **packs `output examples:`**
+
+<br>
 
 ### **`tech` stack**
 
