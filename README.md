@@ -23,7 +23,7 @@ The application is implemented in Golang and provides an HTTP API for receiving 
 
 ### **`tech` stack**
 
-<img width="175" alt="golang" src="assets/golang.png"/>&nbsp;&nbsp;&nbsp;
+<img width="175" alt="golang" src="assets/go.png.jpeg"/>&nbsp;&nbsp;&nbsp;
 
  <br>
 
