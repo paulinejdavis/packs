@@ -7,6 +7,8 @@ width="253" alt="GS logo" src="assets/gs.logo.png">
 
 This application calculates the correct number of packs needed to ship to the customer based on the specified pack sizes (250, 500, 1000, 2000, 5000 items) and pack rules. It ensures that only whole packs are sent, no more items than necessary are dispatched, and the fewest possible packs are used to fulfill each order.
 
+<img width="453" alt="table" src="assets/table.png">
+
 ### **packs `setup`:**
 
 To use the application, submit an order through the HTTP API endpoint specifying the number of items. The application will return the calculated number of packs needed to fulfill the order according to the specified rules.
