@@ -1,10 +1,11 @@
 package main
 
 import (
-    "fmt"
-    "log"
-    "net/http"
-    "strconv"
+	"fmt"
+	"log"
+	"net/http"
+	"os"
+	"strconv"
 	"strings"
 )
 
@@ -100,6 +101,13 @@ func formatResponse(orderSize int, packs map[int]int) string {
 }
 
 func main() {
-    http.HandleFunc("/order", handleOrder)
-    log.Fatal(http.ListenAndServe(":8080", nil))
+	http.HandleFunc("/order", handleOrder)
+    
+    port := os.Getenv("PORT")
+    if port == "" {
+        log.Fatal("PORT environment variable is not set")
+    }
+
+    log.Printf("Starting server on port %s", port)
+    log.Fatal(http.ListenAndServe(":"+port, nil))
 }
