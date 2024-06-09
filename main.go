@@ -1,10 +1,11 @@
 package main
 
 import (
-    "encoding/json"
+    "fmt"
     "log"
     "net/http"
     "strconv"
+	"strings"
 )
 
 var PackSizes = []int{5000, 2000, 1000, 500, 250}
@@ -52,14 +53,50 @@ func handleOrder(w http.ResponseWriter, r *http.Request) {
     }
 
     packs := calculatePacks(orderSize)
-    response, err := json.Marshal(packs)
+    response := formatResponse(orderSize, packs)
     if err != nil {
         http.Error(w, "Error processing request", http.StatusInternalServerError)
         return
     }
 
-    w.Header().Set("Content-Type", "application/json")
-    w.Write(response)
+    w.Header().Set("Content-Type", "text/html")
+    w.Write([]byte(response))
+}
+
+func formatResponse(orderSize int, packs map[int]int) string {
+    parts := []string{fmt.Sprintf("An order of %d items was placed so ", orderSize)}
+    for size, count := range packs {
+        parts = append(parts, fmt.Sprintf("%d x %d", count, size))
+    }
+    orderDetails := strings.Join(parts, " and ") + " packs will be shipped."
+
+    return fmt.Sprintf(`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Order Details</title>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+        <style>
+            body {
+                font-family: 'Roboto', sans-serif;
+                padding: 20px;
+            }
+            h1 {
+                font-weight: 700;
+            }
+            p {
+                font-weight: 400;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Pack Order Details</h1>
+        <p>%s</p>
+    </body>
+    </html>
+    `, orderDetails)
 }
 
 func main() {
