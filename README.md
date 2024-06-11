@@ -17,17 +17,46 @@ To use the application, submit an order through the HTTP API endpoint specifying
 
 The application is implemented in Golang and provides an HTTP API for receiving orders. The core logic for calculating the number of packs is encapsulated in functions within `main.go`, ensuring adherence to the specified rules. Unit tests in `main_test.go` verify the accuracy of the pack calculation logic.
 
+### **packs `deploy links..`:**
+
+```
+https://packs521-6356c09a463c.herokuapp.com/order?orderSize=1
+```
+
+```
+https://packs521-6356c09a463c.herokuapp.com/order?orderSize=250
+```
+
+```
+https://packs521-6356c09a463c.herokuapp.com/order?orderSize=251
+```
+
+```
+https://packs521-6356c09a463c.herokuapp.com/order?orderSize=501
+```
+
+```
+https://packs521-6356c09a463c.herokuapp.com/order?orderSize=12001
+```
+
 ### **packs `output examples:`**
+
+<img width="453" alt="tests" src="assets/test.png">
 
 <br>
 
 ### **`tech` stack**
 
-<img width="175" alt="golang" src="assets/go.png.jpeg"/>&nbsp;&nbsp;&nbsp;
+<img width="175" alt="golang" src="assets/go.png.jpeg"/>
+
+<img width="175" alt="heroku" src="assets/heroku.png"/>
+
+<img width="175" alt="html" src="assets/html.png"/>
 
  <br>
 
 ### **next `steps`**
 
+- test all edge cases
 - keep app flexibility so that pack sizes can be amended without changing the production code
 - create a UI to interact with the API
